@@ -10,19 +10,26 @@ DATA_DIR = PROJECT_ROOT / "data"
 MODELS_DIR = BACKEND_DIR / "ml" / "models"
 DATABASE_DIR = BACKEND_DIR / "database"
 
-# Ensure directories exist
-MODELS_DIR.mkdir(parents=True, exist_ok=True)
-DATABASE_DIR.mkdir(parents=True, exist_ok=True)
+# Ensure directories exist safely
+try:
+    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    DATABASE_DIR.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
 
 # Load .env file if available
 dotenv_path = PROJECT_ROOT / ".env"
 if dotenv_path.exists():
     load_dotenv(dotenv_path)
 
+# Determine default database path (use /tmp on serverless Vercel)
+is_vercel = bool(os.environ.get("VERCEL"))
+default_db_path = "/tmp/phishguard.db" if is_vercel else str(DATABASE_DIR / "phishguard.db")
+
 class Config:
     """Base application configuration."""
     SECRET_KEY = os.environ.get("SECRET_KEY", "dev_secret_key_phishguard_ai_2026")
-    DATABASE_PATH = os.environ.get("DATABASE_PATH", str(DATABASE_DIR / "phishguard.db"))
+    DATABASE_PATH = os.environ.get("DATABASE_PATH", default_db_path)
     
     # Upload limits (10 MB max)
     MAX_CONTENT_LENGTH = int(os.environ.get("MAX_CONTENT_LENGTH", 10 * 1024 * 1024))

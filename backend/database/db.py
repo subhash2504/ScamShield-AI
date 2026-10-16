@@ -1,7 +1,7 @@
 import sqlite3
 import json
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from backend.config import get_config
 
@@ -44,7 +44,7 @@ def record_scan(scan_type: str, risk_category: str, risk_score: float,
     Full private messages are NOT retained.
     """
     scan_id = str(uuid.uuid4())
-    timestamp = datetime.utcnow().isoformat()
+    timestamp = datetime.now(timezone.utc).isoformat()
     
     # Truncate and sanitize snippet (max 80 chars)
     sanitized_snippet = ""
