@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard AI — Intelligent Fraud & Phishing Detection Platform</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%2300f2fe%22><path d=%22M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.54-3.13 8.79-7 9.87-3.87-1.08-7-5.33-7-9.87V6.3l7-3.12z%22/></svg>">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">PhishGuard AI</div>
+          <span class="brand-badge">SecOps v1.0</span>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <div class="nav-section-title">Navigation</div>
+        <li>
+          <a class="nav-link active" data-view="view-home">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Home Overview
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="/dashboard.html">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            Analytics Dashboard
+          </a>
+        </li>
+
+        <div class="nav-section-title">Threat Scanners</div>
+        <li>
+          <a class="nav-link" data-view="view-message">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Analyze Message
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" data-view="view-url">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            Scan a URL
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" data-view="view-email">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Analyze Email
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" data-view="view-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            Screenshot OCR
+          </a>
+        </li>
+
+        <div class="nav-section-title">Knowledge Base</div>
+        <li>
+          <a class="nav-link" data-view="view-tips">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            Awareness Guide
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Core Engine: <strong style="color:var(--accent-cyan);">Active</strong></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper">
+      <!-- Mobile Topbar -->
+      <header class="topbar">
+        <div class="brand-title">PhishGuard AI</div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </header>
+
+      <!-- VIEW 1: HOME -->
+      <section class="content-view active" id="view-home">
+        <div class="hero-section">
+          <div class="hero-glow"></div>
+          <div class="hero-badge">AI-Powered Threat Protection</div>
+          <h1 class="hero-title">Detect Threats Before They Reach You</h1>
+          <p class="hero-description">
+            PhishGuard AI analyzes suspicious SMS, WhatsApp messages, emails, URLs, and screenshots using machine learning classifiers combined with multi-layer explainable heuristic rules.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="window.phishApp.switchView('view-message')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Analyze a Message
+            </button>
+            <button class="btn btn-secondary" onclick="window.phishApp.switchView('view-url')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+              Scan a URL
+            </button>
+            <a href="/dashboard.html" class="btn btn-outline">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              View Analytics
+            </a>
+          </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid-3">
+          <div class="card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="feature-title">Multi-Channel Ingestion</h3>
+            <p class="feature-desc">Inspect text from SMS, WhatsApp, email headers/bodies, web links, or uploaded screenshots with optical character recognition (OCR).</p>
+          </div>
+
+          <div class="card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <h3 class="feature-title">Explainable Scoring</h3>
+            <p class="feature-desc">Transparent 0–100 risk indexing with breakdown of specific social engineering cues: urgent coercion, fake prizes, and credential harvesting.</p>
+          </div>
+
+          <div class="card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h3 class="feature-title">Zero-Execution Architecture</h3>
+            <p class="feature-desc">URLs and payloads are safely parsed statically without connecting to dangerous servers or executing client scripts.</p>
+          </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="card" style="margin-top: 30px;">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              How PhishGuard AI Works
+            </h2>
+          </div>
+          <div class="grid-4" style="margin-top: 10px;">
+            <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md);">
+              <span style="color: var(--accent-cyan); font-weight: 800; font-size: 1.2rem;">01</span>
+              <h4 style="margin: 8px 0 4px;">Ingest & Normalize</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Text is sanitized, stripped of potential injection attacks, and normalized.</p>
+            </div>
+            <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md);">
+              <span style="color: var(--accent-cyan); font-weight: 800; font-size: 1.2rem;">02</span>
+              <h4 style="margin: 8px 0 4px;">Feature Extraction</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Lexical patterns, URL tokens, entropy, and TF-IDF n-grams are evaluated.</p>
+            </div>
+            <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md);">
+              <span style="color: var(--accent-cyan); font-weight: 800; font-size: 1.2rem;">03</span>
+              <h4 style="margin: 8px 0 4px;">Ensemble Analysis</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Trained ML classifier probability is blended with documented deterministic security rules.</p>
+            </div>
+            <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md);">
+              <span style="color: var(--accent-cyan); font-weight: 800; font-size: 1.2rem;">04</span>
+              <h4 style="margin: 8px 0 4px;">Explainable Plan</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Actionable recommendations guide users on safe response protocols.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: MESSAGE SCANNER -->
+      <section class="content-view" id="view-message">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Suspicious Message Analysis (SMS / WhatsApp / Chat)
+            </h2>
+          </div>
+          <p class="form-hint" style="margin-bottom: 16px;">
+            Paste suspicious communications to inspect for psychological coercion, impersonation, prize lures, or hidden phishing links.
+          </p>
+
+          <!-- Sample Buttons -->
+          <div class="sample-chips">
+            <span class="sample-chip-label">Try a sample:</span>
+            <button class="chip-btn" onclick="window.phishApp.loadMessageSample('bank')">Bank Account Locked</button>
+            <button class="chip-btn" onclick="window.phishApp.loadMessageSample('package')">Missed Delivery Fee</button>
+            <button class="chip-btn" onclick="window.phishApp.loadMessageSample('lottery')">Lottery Prize Claim</button>
+            <button class="chip-btn" onclick="window.phishApp.loadMessageSample('benign')">Legitimate Team Meeting</button>
+          </div>
+
+          <form id="messageForm" style="margin-top: 16px;" onsubmit="window.phishApp.analyzeMessage(event)">
+            <div class="form-group">
+              <label for="messageInput" class="form-label">Message Content</label>
+              <textarea id="messageInput" class="form-control" placeholder="e.g. URGENT: Your Chase bank account has been suspended due to suspicious activity. Verify immediately at http://chase-security-update.xyz" required></textarea>
+              <div style="display: flex; justify-content: space-between; margin-top: 6px;">
+                <span class="form-hint">Do not enter personal passwords, PINs, or confidential banking numbers.</span>
+                <span class="form-hint" id="messageCharCount">0 characters</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+              <button type="submit" class="btn btn-primary" id="messageSubmitBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Analyze Message
+              </button>
+              <button type="button" class="btn btn-outline" onclick="document.getElementById('messageInput').value=''; document.getElementById('messageCharCount').innerText='0 characters';">Clear</button>
+            </div>
+          </form>
+
+          <!-- Loading Spinner -->
+          <div class="loading-spinner" id="messageLoading">
+            <div class="spinner"></div>
+            <p style="color: var(--accent-cyan); font-weight: 600;">Analyzing linguistic cues & ML indicators...</p>
+          </div>
+
+          <!-- Result Card -->
+          <div class="result-container" id="messageResult"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: URL SCANNER -->
+      <section class="content-view" id="view-url">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              URL Phishing & Link Scanner
+            </h2>
+          </div>
+          <p class="form-hint" style="margin-bottom: 16px;">
+            Inspect suspicious web addresses without visiting the destination. We evaluate domain structure, homograph punycode, IP hostnames, path entropy, and security heuristics.
+          </p>
+
+          <div class="sample-chips">
+            <span class="sample-chip-label">Try a sample:</span>
+            <button class="chip-btn" onclick="window.phishApp.loadUrlSample('ip')">Raw IP Hostname</button>
+            <button class="chip-btn" onclick="window.phishApp.loadUrlSample('typo')">Typo-squatted Paypal</button>
+            <button class="chip-btn" onclick="window.phishApp.loadUrlSample('subdomain')">Excessive Subdomains</button>
+            <button class="chip-btn" onclick="window.phishApp.loadUrlSample('benign')">Benign Wikipedia</button>
+          </div>
+
+          <form id="urlForm" style="margin-top: 16px;" onsubmit="window.phishApp.analyzeUrl(event)">
+            <div class="form-group">
+              <label for="urlInput" class="form-label">Target URL</label>
+              <input type="text" id="urlInput" class="form-control" placeholder="https://login.paypal.com.verify-billing-account.tk/login.php" required />
+              <span class="form-hint">Safe parsing mode: PhishGuard AI does not trigger active network requests to malicious targets.</span>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+              <button type="submit" class="btn btn-primary" id="urlSubmitBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Inspect URL
+              </button>
+              <button type="button" class="btn btn-outline" onclick="document.getElementById('urlInput').value='';">Clear</button>
+            </div>
+          </form>
+
+          <div class="loading-spinner" id="urlLoading">
+            <div class="spinner"></div>
+            <p style="color: var(--accent-cyan); font-weight: 600;">Evaluating URL heuristics and domain properties...</p>
+          </div>
+
+          <div class="result-container" id="urlResult"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: EMAIL SCANNER -->
+      <section class="content-view" id="view-email">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Email Security & Header Inspection
+            </h2>
+          </div>
+          <p class="form-hint" style="margin-bottom: 16px;">
+            Evaluate email headers, subject lines, and body text for executive impersonation (BEC), urgent wire requests, credential harvesting links, and attachment traps.
+          </p>
+
+          <div class="sample-chips">
+            <span class="sample-chip-label">Try a sample:</span>
+            <button class="chip-btn" onclick="window.phishApp.loadEmailSample('ceo')">CEO Urgent Wire Transfer</button>
+            <button class="chip-btn" onclick="window.phishApp.loadEmailSample('payroll')">Payroll Direct Deposit Update</button>
+            <button class="chip-btn" onclick="window.phishApp.loadEmailSample('newsletter')">Legitimate Tech Newsletter</button>
+          </div>
+
+          <form id="emailForm" style="margin-top: 16px;" onsubmit="window.phishApp.analyzeEmail(event)">
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="emailSender" class="form-label">Sender Address / Display Name (Optional)</label>
+                <input type="text" id="emailSender" class="form-control" placeholder="CEO Office <ceo-urgent@mail-secure-server.com>" />
+              </div>
+              <div class="form-group">
+                <label for="emailSubject" class="form-label">Email Subject</label>
+                <input type="text" id="emailSubject" class="form-control" placeholder="URGENT: Confidential Acquisition Wire Payment Required Today" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="emailBody" class="form-label">Email Body</label>
+              <textarea id="emailBody" class="form-control" style="min-height: 140px;" placeholder="Paste the complete email body text here..." required></textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+              <button type="submit" class="btn btn-primary" id="emailSubmitBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Analyze Email
+              </button>
+              <button type="button" class="btn btn-outline" onclick="document.getElementById('emailSender').value=''; document.getElementById('emailSubject').value=''; document.getElementById('emailBody').value='';">Clear</button>
+            </div>
+          </form>
+
+          <div class="loading-spinner" id="emailLoading">
+            <div class="spinner"></div>
+            <p style="color: var(--accent-cyan); font-weight: 600;">Scanning email headers, sender domains, and body semantics...</p>
+          </div>
+
+          <div class="result-container" id="emailResult"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 5: SCREENSHOT OCR -->
+      <section class="content-view" id="view-screenshot">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              Screenshot Upload & Optical Character Recognition (OCR)
+            </h2>
+          </div>
+          <p class="form-hint" style="margin-bottom: 16px;">
+            Upload an image or screenshot of a suspicious SMS, email, or WhatsApp message. The engine extracts text for your review before passing it to the threat analysis pipeline.
+          </p>
+
+          <div class="drop-zone" id="dropZone" onclick="document.getElementById('screenshotFileInput').click()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <h3 style="font-size: 1.1rem; margin-bottom: 6px;">Click or Drag & Drop screenshot here</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Supports PNG, JPG, JPEG (Max file size: 10 MB)</p>
+            <input type="file" id="screenshotFileInput" accept="image/png,image/jpeg,image/jpg" style="display:none;" onchange="window.phishApp.handleScreenshotSelect(this)" />
+          </div>
+
+          <!-- Preview & Confirmation UI -->
+          <div class="preview-container" id="screenshotPreviewBox">
+            <img id="screenshotPreviewImg" class="image-preview" alt="Screenshot preview" />
+            <p id="screenshotFileInfo" style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 12px;"></p>
+            <button class="btn btn-primary" id="extractOcrBtn" onclick="window.phishApp.uploadAndExtractOcr()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Extract Text via OCR
+            </button>
+          </div>
+
+          <!-- OCR Text Confirmation & Editing Area -->
+          <div id="ocrConfirmationSection" style="display:none; margin-top: 24px;">
+            <div class="form-group">
+              <label for="ocrConfirmedText" class="form-label" style="display:flex; justify-content:space-between;">
+                <span>Extracted Text (Confirm or Edit Before Scanning):</span>
+                <span class="badge-risk risk-low" style="font-size:0.7rem; padding: 2px 8px;">OCR Verified</span>
+              </label>
+              <textarea id="ocrConfirmedText" class="form-control" style="min-height: 120px;"></textarea>
+              <span class="form-hint">Review extracted text to correct any OCR typos or verify details.</span>
+            </div>
+            <button class="btn btn-primary" onclick="window.phishApp.analyzeExtractedText()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Analyze Extracted Message
+            </button>
+          </div>
+
+          <div class="loading-spinner" id="ocrLoading">
+            <div class="spinner"></div>
+            <p style="color: var(--accent-cyan); font-weight: 600;">Processing image with OCR...</p>
+          </div>
+
+          <div class="result-container" id="ocrResult"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 6: CYBERSECURITY AWARENESS -->
+      <section class="content-view" id="view-tips">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Cybersecurity Awareness & Threat Defense Guide
+            </h2>
+          </div>
+          <p class="form-hint" style="margin-bottom: 24px;">
+            Recognize the psychological manipulation techniques behind modern cyber fraud and protect your digital identity.
+          </p>
+
+          <div class="grid-2">
+            <div class="card" style="background: var(--bg-surface);">
+              <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">Common Social Engineering Triggers</h3>
+              <ul style="list-style: disc inside; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+                <li><strong>Artificial Urgency:</strong> Threatening immediate suspension ("Account closed within 2 hours").</li>
+                <li><strong>Unsolicited Financial Windfalls:</strong> Unexpected lottery wins, inheritances, or stimulus funds.</li>
+                <li><strong>Fear & Authority:</strong> Impersonating tax departments, law enforcement, or executive leadership.</li>
+                <li><strong>Delivery Traps:</strong> Fake postal tracking notifications requesting small redelivery fees to capture card numbers.</li>
+              </ul>
+            </div>
+
+            <div class="card" style="background: var(--bg-surface);">
+              <h3 style="color: var(--accent-cyan); margin-bottom: 12px;">URL Safety Checklist</h3>
+              <ul style="list-style: disc inside; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+                <li><strong>HTTPS Does Not Guarantee Trust:</strong> Over 80% of phishing sites now use free SSL certificates.</li>
+                <li><strong>Check Domain Hierarchy:</strong> <code>paypal.com.verify-access.net</code> belongs to <code>verify-access.net</code>, NOT PayPal.</li>
+                <li><strong>Beware Homograph Attacks:</strong> Attackers substitute Cyrillic or special characters that look identical.</li>
+                <li><strong>Direct Navigation:</strong> Always type the known official domain manually in your browser.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" style="background: var(--bg-surface); margin-top: 20px;">
+            <h3 style="color: var(--risk-high); margin-bottom: 12px;">What To Do If You Interacted With a Phishing Message</h3>
+            <ol style="list-style: decimal inside; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+              <li><strong>Change Credentials Immediately:</strong> Update your passwords from a known secure device and enable Multi-Factor Authentication (MFA).</li>
+              <li><strong>Freeze or Alert Financial Cards:</strong> Contact your banking institution's fraud hotline to freeze compromised cards.</li>
+              <li><strong>Report the Incident:</strong> Forward scam SMS messages to <strong>7726 (SPAM)</strong> or report to consumer protection agencies (such as the FTC or national CERT).</li>
+              <li><strong>Run Endpoint Scans:</strong> If any file was downloaded or opened, run an offline antimalware scan immediately.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p><strong>PhishGuard AI</strong> — Intelligent Cybersecurity & Anti-Fraud Advisory Platform.</p>
+        <p style="margin-top: 4px;">
+          Security Disclaimer: This platform provides heuristic and machine-learning risk indicators for educational and defensive triage. It does not replace full enterprise endpoint protection. No submitted sensitive credentials or full messages are permanently retained.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
